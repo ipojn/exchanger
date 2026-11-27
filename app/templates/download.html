@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Скачать файл — exchanger{% endblock %}
+{% block content %}
+<section class="card">
+  {% if meta %}
+    <h1>Файл готов к скачиванию</h1>
+    <p class="file-name">{{ meta.original_name }}</p>
+    <p class="muted">{{ meta.size | human_size }} · ссылка истекает {{ meta.expires_at.strftime("%d.%m.%Y %H:%M UTC") }}</p>
+    <a class="button" href="/s/{{ code }}/download">Скачать</a>
+  {% else %}
+    <h1>Файл не найден</h1>
+    <p class="muted">Возможно, ссылка истекла или код неверный.</p>
+    <a class="button" href="/">Загрузить свой файл</a>
+  {% endif %}
+</section>
+{% endblock %}

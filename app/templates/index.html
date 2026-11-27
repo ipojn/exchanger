@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Загрузить файл — exchanger{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Загрузить файл</h1>
+  <p class="muted">Максимум 100 МБ. Ссылка живёт 7 дней.</p>
+
+  <form id="upload-form" class="dropzone" enctype="multipart/form-data">
+    <input id="file-input" type="file" name="file" hidden>
+    <p id="drop-hint">Перетащите файл сюда или <button type="button" id="pick" class="link">выберите</button></p>
+    <p id="file-name" class="file-name"></p>
+    <button id="submit" type="submit" disabled>Загрузить</button>
+    <progress id="progress" value="0" max="100" hidden></progress>
+  </form>
+
+  <div id="result" class="result" hidden>
+    <p>Готово! Ссылка:</p>
+    <div class="copy-row">
+      <input id="share-url" readonly>
+      <button id="copy" type="button">Копировать</button>
+    </div>
+    <p class="muted" id="meta-line"></p>
+    <a id="open-link" href="#" target="_blank" rel="noopener">Открыть страницу скачивания →</a>
+  </div>
+
+  <p id="error" class="error" hidden></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/app.js"></script>{% endblock %}
